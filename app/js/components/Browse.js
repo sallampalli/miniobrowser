@@ -93,15 +93,16 @@ export default class Browse extends React.Component {
             }
           })
       this.history = browserHistory.listen(({pathname}) => {
-        if (pathname === `${minioBrowserPrefix}/login`) return // FIXME: better organize routes and remove this
-        if (!pathname.endsWith('/')) pathname += '/'
-        if (pathname === minioBrowserPrefix + '/') {
+        let decPathname = decodeURI(pathname)
+        if (decPathname === `${minioBrowserPrefix}/login`) return // FIXME: better organize routes and remove this
+        if (!decPathname.endsWith('/')) decPathname += '/'
+        if (decPathname === minioBrowserPrefix + '/') {
           dispatch(actions.setCurrentBucket(''))
           dispatch(actions.setCurrentPath(''))
           dispatch(actions.setObjects([]))
           return
         }
-        let obj = utils.pathSlice(pathname)
+        let obj = utils.pathSlice(decPathname)
         dispatch(actions.selectBucket(obj.bucket, obj.prefix))
       })
     }
@@ -123,13 +124,14 @@ export default class Browse extends React.Component {
     }
 
     selectPrefix(e, prefix) {
-        const { dispatch, currentPath, web, currentBucket } = this.props
         e.preventDefault()
+        const { dispatch, currentPath, web, currentBucket } = this.props
+        const encPrefix = encodeURI(prefix)
         if (prefix.endsWith('/') || prefix === '') {
             if (prefix === currentPath) return
-            browserHistory.push(utils.pathJoin(currentBucket, prefix))
+            browserHistory.push(utils.pathJoin(currentBucket, encPrefix))
         } else {
-            window.location = `${window.location.origin}/minio/download/${currentBucket}/${prefix}?token=${storage.getItem('token')}`
+            window.location = `${window.location.origin}/minio/download/${currentBucket}/${encPrefix}?token=${storage.getItem('token')}`
         }
     }
 
