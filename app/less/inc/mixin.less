@@ -33,3 +33,20 @@
 .for(@array)   when (default()) {.for-impl_(length(@array))}
 .for-impl_(@i) when (@i > 1)    {.for-impl_((@i - 1))}
 .for-impl_(@i) when (@i > 0)    {.-each(extract(@array, @i))}
+
+/*----------------------------------------
+    List Loader
+-----------------------------------------*/
+.list-loader(@width, @height, @borderColor, @borderColorBottom) {
+    content: '';
+    width: @width;
+    height: @height;
+    border-radius: 50%;
+    .animated(zoomIn, 500ms);
+    border: 2px solid @borderColor;
+    border-bottom-color: @borderColorBottom;
+    position: absolute;
+    z-index: 1;
+    -webkit-animation: zoomIn 250ms, spin 700ms 250ms infinite linear;
+    animation: zoomIn 250ms, spin 700ms 250ms infinite linear;
+}

@@ -38,9 +38,6 @@ let ObjectsList = ({ objects, currentPath, selectPrefix, dataType, showDeleteCon
         }
         return (
             <div key={i} className={"fesl-row " + loadingClass} data-type={dataType(object.name, object.contentType)}>
-
-                {loadPath === `${currentPath}${object.name}` ? <span className="loading l-listing"><i /></span> : ''}
-
                 <div className="fesl-item fi-name">
                     <a href="" onClick={(e) => selectPrefix(e, `${currentPath}${object.name}`)}>
                         {object.name}

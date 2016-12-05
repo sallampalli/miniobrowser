@@ -29,7 +29,6 @@ let SideBar = ({ visibleBuckets, loadBucket, currentBucket, selectBucket, search
         return <li className={classNames({'active': bucket === currentBucket})} key={i} onClick={(e) => selectBucket(e, bucket)}>
             <a href="" className={classNames({'fesli-loading': bucket === loadBucket})}>
                 {bucket}
-                {bucket === loadBucket ? <span className="loading l-bucket"><i /></span> : ''}
             </a>
 
             <i className="fesli-trigger" onClick={showPolicy}></i>
