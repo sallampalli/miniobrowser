@@ -1,4 +1,4 @@
-# Minio File Browser
+y# Minio File Browser
 
 ``miniobrowser`` provides minimal set of UI to manage buckets and objects on ``minio`` server. ``miniobrowser`` is written in javascript and released under [Apache 2.0 License](./LICENSE).
 
@@ -7,7 +7,8 @@
 ```sh
 $ git clone https://github.com/minio/miniobrowser
 $ cd miniobrowser
-$ npm install
+$ curl -o- -L https://yarnpkg.com/install.sh | bash
+$ yarn
 ```
 
 ### Install `go-bindata` and `go-bindata-assetfs`.
@@ -24,19 +25,19 @@ $ go get github.com/elazarl/go-bindata-assetfs/...
 ### Development version
 
 ```sh
-$ npm run build
+$ yarn build
 ```
 
 ### Released version
 
 ```sh
-$ npm run release
+$ yarn release
 ```
 
 ## Run Minio File Browser with live reload.
 
 ```sh
-$ npm run dev
+$ yarn dev
 ```
 
 Open [http://localhost:8080/minio/](http://localhost:8080/minio/) in your browser to play with the application
