@@ -253,7 +253,7 @@ export const selectBucket = (newCurrentBucket, prefix) => {
     let web = getState().web
     let currentBucket = getState().currentBucket
 
-    if(currentBucket !== newCurrentBucket) dispatch(setLoadBucket(newCurrentBucket))
+    if (currentBucket !== newCurrentBucket) dispatch(setLoadBucket(newCurrentBucket))
 
     dispatch(setCurrentBucket(newCurrentBucket))
     dispatch(selectPrefix(prefix))
