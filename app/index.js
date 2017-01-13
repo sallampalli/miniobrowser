@@ -55,12 +55,14 @@ window.web = web
 
 store.dispatch(actions.setWeb(web))
 
-function authNeeded(nextState, replace) {
-  if (!web.LoggedIn()) {
-    store.dispatch(actions.setLoginRedirectPath(location.pathname))
-    replace(`${minioBrowserPrefix}/login`)
-    return
+function authNeeded(nextState, replace, cb) {
+  if (web.LoggedIn()) {
+    return cb()
   }
+  if (location.pathname === minioBrowserPrefix || location.pathname === minioBrowserPrefix+'/') {
+      replace(`${minioBrowserPrefix}/login`)
+  }
+  return cb()
 }
 
 function authNotNeeded(nextState, replace) {

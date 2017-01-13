@@ -52,6 +52,7 @@ export const SHOW_BUCKET_POLICY = 'SHOW_BUCKET_POLICY'
 export const SET_POLICIES = 'SET_POLICIES'
 export const SET_SHARE_OBJECT = 'SET_SHARE_OBJECT'
 export const DELETE_CONFIRMATION = 'DELETE_CONFIRMATION'
+export const SET_PREFIX_WRITABLE = 'SET_PREFIX_WRITABLE'
 
 export const showDeleteConfirmation = (object) => {
   return {
@@ -247,6 +248,13 @@ export const setServerInfo = serverInfo => {
   }
 }
 
+const setPrefixWritable = prefixWritable => {
+  return {
+    type: SET_PREFIX_WRITABLE,
+    prefixWritable,
+  }
+}
+
 export const selectBucket = (newCurrentBucket, prefix) => {
   if (!prefix) prefix = ''
   return (dispatch, getState) => {
@@ -274,6 +282,7 @@ export const selectPrefix = prefix => {
               object.name = object.name.replace(`${prefix}`, ''); return object
             }))
         ))
+        dispatch(setPrefixWritable(res.writable))
         dispatch(setSortNameOrder(false))
         dispatch(setCurrentPath(prefix))
         dispatch(setLoadBucket(''))
@@ -339,11 +348,20 @@ export const uploadFile = (file, xhr) => {
 
     xhr.open('PUT', uploadUrl, true)
     xhr.withCredentials = false
-    xhr.setRequestHeader("Authorization", 'Bearer ' + storage.getItem('token'))
+    const token = storage.getItem('token')
+    if (token)  xhr.setRequestHeader("Authorization", 'Bearer ' + storage.getItem('token'))
     xhr.setRequestHeader('x-amz-date', Moment().utc().format('YYYYMMDDTHHmmss') + 'Z')
     dispatch(addUpload({slug, xhr, size: file.size, name: file.name}))
 
     xhr.onload = function(event) {
+      if(xhr.status == 401 || xhr.status == 403 || xhr.status == 500) {
+        setShowAbortModal(false)
+        dispatch(stopUpload({slug}))
+        dispatch(showAlert({
+            type: 'danger',
+            message: 'Unauthorized request.'
+        }))
+      }
       if(xhr.status == 200) {
           setShowAbortModal(false)
           dispatch(stopUpload({slug}))
