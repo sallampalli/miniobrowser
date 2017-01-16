@@ -1,5 +1,5 @@
 /*
- * Minio Browser (C) 2016 Minio, Inc.
+ * Minio Browser (C) 2016, 2017 Minio, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,10 +19,6 @@ import connect from 'react-redux/lib/components/connect'
 import Dropdown from 'react-bootstrap/lib/Dropdown'
 
 let BrowserDropdown = ({fullScreen, showAbout, showSettings, logout}) => {
-  console.log(fullScreen)
-  console.log(showAbout)
-  console.log(showSettings)
-  console.log(logout)
   return (
      <li>
         <Dropdown pullRight id="top-right-menu">
