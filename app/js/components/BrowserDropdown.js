@@ -36,7 +36,7 @@ let BrowserDropdown = ({fullScreen, showAbout, showSettings, logout}) => {
                     <a target="_blank" href="https://docs.minio.io/">Documentation <i className="fa fa-book"></i></a>
                 </li>
                 <li>
-                    <a target="_blank" href="https://gitter.im/minio/minio">Ask for help <i className="fa fa-question-circle"></i></a>
+                    <a target="_blank" href="https://slack.minio.io">Ask for help <i className="fa fa-question-circle"></i></a>
                 </li>
                 <li>
                     <a href="" onClick={showAbout}>About <i className="fa fa-info-circle"></i></a>
