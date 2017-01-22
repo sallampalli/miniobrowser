@@ -30,7 +30,7 @@ header.fesl-row {
 
         .fesl-item {
             cursor: pointer;
-            color: @text-muted-color;
+            color: @text-color;
             font-weight: 500;
             margin-bottom: -5px;
 
@@ -115,15 +115,15 @@ div.fesl-row {
     ----------------------------*/
     &[data-type=folder]:before {
         content: '\f114';
-        background-color: #2dd3fb;
+        background-color: #a1d6dd;
     }
     &[data-type=pdf]:before {
         content: "\f1c1";
-        background-color: #fb766d;
+        background-color: #fa7775;
     }
     &[data-type=zip]:before {
         content: "\f1c6";
-        background-color: #374952;
+        background-color: #427089;
     }
     &[data-type=audio]:before {
         content: "\f1c7";
@@ -139,15 +139,15 @@ div.fesl-row {
     }
     &[data-type=image]:before {
         content: "\f1c5";
-        background-color: #d24ce9;
+        background-color: #f06292;
     }
     &[data-type=video]:before {
         content: "\f1c8";
-        background-color: #fdc206;
+        background-color: #f8c363;
     }
     &[data-type=other]:before {
         content: "\f016";
-        background-color: #8a8a8a;
+        background-color: #afafaf;
     }
     &[data-type=text]:before {
         content: "\f0f6";
@@ -159,7 +159,7 @@ div.fesl-row {
     }
     &[data-type=presentation]:before {
         content: "\f1c4";
-        background-color: #fba220;
+        background-color: #896ea6;
     }
 
     &.fesl-loading{
@@ -185,11 +185,10 @@ div.fesl-row {
     Files and Folders
 ----------------------------*/
 .fesl-item {
-    color: #808080;
     display: block;
 
     a {
-        color: @text-color;
+        color: darken(@text-color, 5%);
     }
 
     @media(min-width: (@screen-sm-min - 100px)) {

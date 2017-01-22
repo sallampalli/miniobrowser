@@ -25,14 +25,13 @@
                 &:before {
                     content: '/';
                     margin: 0 4px;
-                    color: #e6e6e6;
+                    color: @text-color;
                 }
             }
         }
     }
 
     p {
-        color: @text-muted-color;
         margin-top: 7px;
     }
 }
@@ -51,18 +50,13 @@
     }
 
     & > ul {
-        color: @text-muted-color;
         margin-top: 7px;
         list-style: none;
         padding: 0;
 
         & > li {
-            padding-right: 0px;
+            padding-right: 0;
             display: inline-block;
-
-            &:first-child {
-                color: #2ED2FF;
-            }
         }
     }
 }
@@ -78,7 +72,7 @@
         position: absolute;
         left: 0;
         height: 100%;
-        background: @cyan;
+        background: @link-color;
     }
 }
 
