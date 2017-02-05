@@ -4,9 +4,9 @@
   "description": "Minio Browser",
   "scripts": {
     "test": "karma start",
-    "dev": "NODE_ENV=dev webpack-dev-server --devtool eval --progress --colors --hot --content-base dev",
-    "build": "NODE_ENV=dev node build.js",
-    "release": "NODE_ENV=production MINIO_UI_BUILD=RELEASE node build.js",
+    "dev": "cross-env NODE_ENV=dev webpack-dev-server --devtool eval --progress --colors --hot --content-base dev",
+    "build": "cross-env NODE_ENV=dev node build.js",
+    "release": "cross-env NODE_ENV=production MINIO_UI_BUILD=RELEASE node build.js",
     "format": "esformatter -i 'app/**/*.js'"
   },
   "repository": {
@@ -77,6 +77,7 @@
     "react-custom-scrollbars": "^2.2.2",
     "react-dom": "^0.14.6",
     "react-dropzone": "^3.5.3",
-    "react-onclickout": "2.0.4"
+    "react-onclickout": "2.0.4",
+    "cross-env":"1.0.6"
   }
 }
